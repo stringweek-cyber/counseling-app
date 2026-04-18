@@ -25,7 +25,6 @@
         }
 
         .container { max-width: 800px; width: 100%; }
-
         header { text-align: center; margin-bottom: 40px; }
 
         .card {
@@ -50,7 +49,6 @@
         }
 
         h2 { font-size: 1.3rem; margin-top: 0; display: flex; align-items: center; }
-
         .content { margin-top: 15px; }
 
         .btn {
@@ -100,16 +98,26 @@
             color: white;
             transition: transform 0.1s, box-shadow 0.1s;
             box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: inherit;
         }
 
         /* 슬림 버튼 (2번째 줄) */
         .ql-btn.slim {
             padding: 8px 4px;
             border-radius: 8px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: -0.05em;
+            font-size: 0.8rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .ql-btn.slim {
             white-space: nowrap;
+            overflow: hidden;
+            font-size: 0.7rem;
+            letter-spacing: -0.04em;
         }
 
         .ql-btn:active { transform: scale(0.96); box-shadow: 0 1px 4px rgba(0,0,0,0.15); }
@@ -121,6 +129,52 @@
         .ql-teal   { background: #00897b; } .ql-teal:hover   { background: #00695c; color: white; }
         .ql-purple { background: #8e24aa; } .ql-purple:hover { background: #6a1b9a; color: white; }
         .ql-pink   { background: #d81b60; } .ql-pink:hover   { background: #ad1457; color: white; }
+        .ql-lime   { background: #7cb342; } .ql-lime:hover   { background: #558b2f; color: white; }
+
+        /* 이미지 팝업 모달 */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.75);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-box {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+        .modal-box img {
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: 12px;
+            display: block;
+        }
+        .modal-close {
+            position: absolute;
+            top: -14px;
+            right: -14px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #fff;
+            color: #333;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            line-height: 1;
+        }
+        .modal-close:hover { background: #eee; }
     </style>
 </head>
 <body>
@@ -133,12 +187,23 @@
         <a href="https://gemini.google.com/share/46b0bfd08dcb" target="_blank" class="ql-btn ql-green">🎁 유사문제 출제 앱</a>
     </div>
 
-    <!-- 2번째 줄 버튼 (슬림) -->
+    <!-- 2번째 줄 버튼 (슬림, 2줄 텍스트) -->
     <div class="quick-links">
-        <a href="https://stringweek-cyber.github.io/timer/" target="_blank" class="ql-btn slim ql-orange">⏰ 시계&amp;타이머 앱</a>
-        <a href="image_clock" download class="ql-btn slim ql-teal">⏲️ 시계png 다운로드</a>
-        <a href="https://notebooklm.google.com/notebook/8fcfb894-794b-4d77-b61f-5099da558bc5/preview" target="_blank" class="ql-btn slim ql-purple">🌅 생기부 기재요령 챗봇</a>
-        <a href="https://notebooklm.google.com/notebook/6bb90b68-30f1-43cf-887a-d0c570df81c6/preview" target="_blank" class="ql-btn slim ql-pink">🌄 신학기연수 챗봇</a>
+        <a href="https://stringweek-cyber.github.io/timer/" target="_blank" class="ql-btn slim ql-orange">
+            ⏰ 시계 앱
+        </a>
+        <a href="image_clock" download class="ql-btn slim ql-teal">
+            ⏲️ 시계 다운로드
+        </a>
+        <a href="https://notebooklm.google.com/notebook/8fcfb894-794b-4d77-b61f-5099da558bc5/preview" target="_blank" class="ql-btn slim ql-purple">
+            🌅 생기부 챗봇
+        </a>
+        <a href="https://notebooklm.google.com/notebook/6bb90b68-30f1-43cf-887a-d0c570df81c6/preview" target="_blank" class="ql-btn slim ql-pink">
+            🌄 신학기 챗봇
+        </a>
+        <button onclick="document.getElementById('qrModal').classList.add('active')" class="ql-btn slim ql-lime">
+            🥑 담임공지 앱
+        </button>
     </div>
 
     <header>
@@ -185,5 +250,14 @@
         </div>
     </div>
 </div>
+
+<!-- QR 이미지 모달 -->
+<div class="modal-overlay" id="qrModal" onclick="if(event.target===this) this.classList.remove('active')">
+    <div class="modal-box">
+        <button class="modal-close" onclick="document.getElementById('qrModal').classList.remove('active')">✕</button>
+        <img src="qr-message.png" alt="담임공지 앱 QR">
+    </div>
+</div>
+
 </body>
 </html>
