@@ -119,11 +119,43 @@
         ul {
             padding-left: 20px;
         }
+
+        .quick-links {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        .ql-btn {
+            flex: 1;
+            text-align: center;
+            padding: 14px 10px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: white;
+            transition: transform 0.1s, box-shadow 0.1s;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        }
+        .ql-btn:active { transform: scale(0.96); box-shadow: 0 1px 4px rgba(0,0,0,0.15); }
+        .ql-red   { background: #e53935; }
+        .ql-red:hover { background: #c62828; color: white; }
+        .ql-blue  { background: #1e88e5; }
+        .ql-blue:hover { background: #1565c0; color: white; }
+        .ql-green { background: #43a047; }
+        .ql-green:hover { background: #2e7d32; color: white; }
     </style>
 </head>
 <body>
 
 <div class="container">
+
+    <div class="quick-links">
+        <a href="https://gemini.google.com/gem/1CP6opNGhwdltnL6iYa2F8SHh8JCs92-J?usp=sharing" target="_blank" class="ql-btn ql-red">📒 학생사건 요약 gem</a>
+        <a href="https://gemini.google.com/gem/1ClfEnDoysm0kB79-yLIdLiO7YoBDfiNf?usp=sharing" target="_blank" class="ql-btn ql-blue">📌 공문서 작성 gem</a>
+        <a href="https://gemini.google.com/share/46b0bfd08dcb" target="_blank" class="ql-btn ql-green">🎁 유사문제 출제 앱</a>
+    </div>
+
     <header>
         <h1>🚀 AI 상담 자동기록 웹앱 만들기</h1>
     </header>
