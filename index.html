@@ -10,7 +10,7 @@
             --bg-color: #f8f9fa;
             --card-bg: #ffffff;
             --text-color: #3c4043;
-            --highlight-color: #d93025; /* 강조용 붉은색 */
+            --highlight-color: #d93025;
         }
 
         body {
@@ -24,15 +24,9 @@
             justify-content: center;
         }
 
-        .container {
-            max-width: 800px;
-            width: 100%;
-        }
+        .container { max-width: 800px; width: 100%; }
 
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+        header { text-align: center; margin-bottom: 40px; }
 
         .card {
             background: var(--card-bg);
@@ -47,8 +41,7 @@
             display: inline-block;
             background: var(--primary-color);
             color: white;
-            width: 28px;
-            height: 28px;
+            width: 28px; height: 28px;
             border-radius: 50%;
             text-align: center;
             line-height: 28px;
@@ -56,16 +49,9 @@
             margin-right: 10px;
         }
 
-        h2 {
-            font-size: 1.3rem;
-            margin-top: 0;
-            display: flex;
-            align-items: center;
-        }
+        h2 { font-size: 1.3rem; margin-top: 0; display: flex; align-items: center; }
 
-        .content {
-            margin-top: 15px;
-        }
+        .content { margin-top: 15px; }
 
         .btn {
             display: inline-block;
@@ -78,10 +64,7 @@
             margin-top: 15px;
             transition: background-color 0.2s;
         }
-
-        .btn:hover {
-            background-color: #1557b0;
-        }
+        .btn:hover { background-color: #1557b0; }
 
         code {
             background: #f1f3f4;
@@ -92,39 +75,20 @@
             font-weight: bold;
         }
 
-        .img-container {
-            width: 100%;
-            margin: 20px 0;
-            overflow: hidden;
-            border-radius: 8px;
-        }
+        .img-container { width: 100%; margin: 20px 0; overflow: hidden; border-radius: 8px; }
+        .img-container img { width: 100%; height: auto; display: block; }
+        .highlight-text { color: var(--highlight-color); font-weight: bold; }
+        .important { color: var(--highlight-color); font-weight: bold; margin-top: 10px; }
+        ul { padding-left: 20px; }
 
-        .img-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .highlight-text {
-            color: var(--highlight-color);
-            font-weight: bold;
-        }
-
-        .important {
-            color: var(--highlight-color);
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-
+        /* 버튼 줄 공통 */
         .quick-links {
             display: flex;
-            gap: 12px;
-            margin-bottom: 25px;
+            gap: 10px;
+            margin-bottom: 10px;
         }
+
+        /* 기본 버튼 (1번째 줄) */
         .ql-btn {
             flex: 1;
             text-align: center;
@@ -137,23 +101,44 @@
             transition: transform 0.1s, box-shadow 0.1s;
             box-shadow: 0 3px 8px rgba(0,0,0,0.15);
         }
+
+        /* 슬림 버튼 (2번째 줄) */
+        .ql-btn.slim {
+            padding: 8px 4px;
+            border-radius: 8px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: -0.05em;
+            white-space: nowrap;
+        }
+
         .ql-btn:active { transform: scale(0.96); box-shadow: 0 1px 4px rgba(0,0,0,0.15); }
-        .ql-red   { background: #e53935; }
-        .ql-red:hover { background: #c62828; color: white; }
-        .ql-blue  { background: #1e88e5; }
-        .ql-blue:hover { background: #1565c0; color: white; }
-        .ql-green { background: #43a047; }
-        .ql-green:hover { background: #2e7d32; color: white; }
+
+        .ql-red    { background: #e53935; } .ql-red:hover    { background: #c62828; color: white; }
+        .ql-blue   { background: #1e88e5; } .ql-blue:hover   { background: #1565c0; color: white; }
+        .ql-green  { background: #43a047; } .ql-green:hover  { background: #2e7d32; color: white; }
+        .ql-orange { background: #fb8c00; } .ql-orange:hover { background: #e65100; color: white; }
+        .ql-teal   { background: #00897b; } .ql-teal:hover   { background: #00695c; color: white; }
+        .ql-purple { background: #8e24aa; } .ql-purple:hover { background: #6a1b9a; color: white; }
+        .ql-pink   { background: #d81b60; } .ql-pink:hover   { background: #ad1457; color: white; }
     </style>
 </head>
 <body>
-
 <div class="container">
 
+    <!-- 1번째 줄 버튼 -->
     <div class="quick-links">
         <a href="https://gemini.google.com/gem/1CP6opNGhwdltnL6iYa2F8SHh8JCs92-J?usp=sharing" target="_blank" class="ql-btn ql-red">📒 학생사건 요약 gem</a>
         <a href="https://gemini.google.com/gem/1ClfEnDoysm0kB79-yLIdLiO7YoBDfiNf?usp=sharing" target="_blank" class="ql-btn ql-blue">📌 공문서 작성 gem</a>
         <a href="https://gemini.google.com/share/46b0bfd08dcb" target="_blank" class="ql-btn ql-green">🎁 유사문제 출제 앱</a>
+    </div>
+
+    <!-- 2번째 줄 버튼 (슬림) -->
+    <div class="quick-links">
+        <a href="https://stringweek-cyber.github.io/timer/" target="_blank" class="ql-btn slim ql-orange">⏰ 시계&amp;타이머 앱</a>
+        <a href="image_clock" download class="ql-btn slim ql-teal">⏲️ 시계png 다운로드</a>
+        <a href="https://notebooklm.google.com/notebook/8fcfb894-794b-4d77-b61f-5099da558bc5/preview" target="_blank" class="ql-btn slim ql-purple">🌅 생기부 기재요령 챗봇</a>
+        <a href="https://notebooklm.google.com/notebook/6bb90b68-30f1-43cf-887a-d0c570df81c6/preview" target="_blank" class="ql-btn slim ql-pink">🌄 신학기연수 챗봇</a>
     </div>
 
     <header>
@@ -200,6 +185,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>
