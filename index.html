@@ -82,11 +82,11 @@
         /* 버튼 줄 공통 */
         .quick-links {
             display: flex;
-            gap: 10px;
-            margin-bottom: 10px;
+            gap: 8px;
+            margin-bottom: 8px;
         }
 
-        /* 기본 버튼 (1번째 줄) */
+        /* 1줄 큰 버튼 */
         .ql-btn {
             flex: 1;
             text-align: center;
@@ -104,19 +104,15 @@
             font-family: inherit;
         }
 
-        /* 슬림 버튼 (2번째 줄) */
+        /* 2~3줄 슬림 버튼 */
         .ql-btn.slim {
-            padding: 8px 4px;
+            padding: 9px 4px;
             border-radius: 8px;
-            font-size: 0.8rem;
             font-weight: 700;
             line-height: 1.3;
-        }
-
-        .ql-btn.slim {
             white-space: nowrap;
             overflow: hidden;
-            font-size: 0.7rem;
+            font-size: 0.72rem;
             letter-spacing: -0.04em;
         }
 
@@ -130,7 +126,9 @@
         .ql-purple { background: #8e24aa; } .ql-purple:hover { background: #6a1b9a; color: white; }
         .ql-pink   { background: #d81b60; } .ql-pink:hover   { background: #ad1457; color: white; }
         .ql-lime   { background: #7cb342; } .ql-lime:hover   { background: #558b2f; color: white; }
+        .ql-cyan   { background: #00acc1; } .ql-cyan:hover   { background: #00838f; color: white; }
         .ql-indigo { background: #3949ab; } .ql-indigo:hover { background: #283593; color: white; }
+        .ql-brown  { background: #6d4c41; } .ql-brown:hover  { background: #4e342e; color: white; }
 
         /* 이미지 팝업 모달 */
         .modal-overlay {
@@ -142,9 +140,7 @@
             justify-content: center;
             align-items: center;
         }
-        .modal-overlay.active {
-            display: flex;
-        }
+        .modal-overlay.active { display: flex; }
         .modal-box {
             position: relative;
             max-width: 90vw;
@@ -176,34 +172,12 @@
             line-height: 1;
         }
         .modal-close:hover { background: #eee; }
-
-        /* 복사 토스트 */
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%) translateY(20px);
-            background: #323232;
-            color: #fff;
-            padding: 10px 22px;
-            border-radius: 24px;
-            font-size: 0.9rem;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.25s, transform 0.25s;
-            z-index: 2000;
-            white-space: nowrap;
-        }
-        .toast.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
     </style>
 </head>
 <body>
 <div class="container">
 
-    <!-- 1번째 줄 버튼 -->
+    <!-- 1줄: 큰 버튼 4개 -->
     <div class="quick-links">
         <a href="https://gemini.google.com/gem/1CP6opNGhwdltnL6iYa2F8SHh8JCs92-J?usp=sharing" target="_blank" class="ql-btn ql-red">📒 학생사건 요약 gem</a>
         <a href="https://gemini.google.com/gem/1ClfEnDoysm0kB79-yLIdLiO7YoBDfiNf?usp=sharing" target="_blank" class="ql-btn ql-blue">📌 공문서 작성 gem</a>
@@ -211,9 +185,9 @@
         <a href="https://script.google.com/macros/s/AKfycbyr0VPJF7GjEg2XraXelDDAJxv848vUrOehEZdru8XRSLGWXMnJSZ_l1i4DkzVUvSPhQQ/exec" target="_blank" class="ql-btn ql-purple">🔒 생기부 AI 앱</a>
     </div>
 
-    <!-- 2번째 줄 버튼 -->
+    <!-- 2줄: 슬림 버튼 4개 -->
     <div class="quick-links">
-        <button onclick="copyGemPrompt()" class="ql-btn slim ql-indigo">
+        <button onclick="copyGemText()" class="ql-btn slim ql-teal" id="gemCopyBtn">
             📋 gem복사
         </button>
         <a href="https://notebooklm.google.com/notebook/6bb90b68-30f1-43cf-887a-d0c570df81c6/preview" target="_blank" class="ql-btn slim ql-pink">
@@ -222,12 +196,25 @@
         <a href="https://stringweek-cyber.github.io/timer/" target="_blank" class="ql-btn slim ql-orange">
             ⏰ 시계 앱
         </a>
-        <a href="image_clock.png" download class="ql-btn slim ql-teal">
+        <a href="image_clock.png" download class="ql-btn slim ql-indigo">
             ⏲️ 시계 다운로드
         </a>
-        <button onclick="window.open('https://stringweek-cyber.github.io/message/', '_blank'); document.getElementById('qrModal').classList.add('active')" class="ql-btn slim ql-lime">
+    </div>
+
+    <!-- 3줄: 슬림 버튼 4개 -->
+    <div class="quick-links">
+        <button onclick="document.getElementById('qrModal').classList.add('active')" class="ql-btn slim ql-lime">
             🥑 담임공지 앱
         </button>
+        <a href="https://stringweek-cyber.github.io/student/" target="_blank" class="ql-btn slim ql-blue">
+            📋 출결 앱
+        </a>
+        <a href="https://www.classroomzen.com/breathing/everyday-anxiety" target="_blank" class="ql-btn slim ql-cyan">
+            🌬️ 호흡법
+        </a>
+        <a href="https://lazygyu.github.io/roulette/" target="_blank" class="ql-btn slim ql-brown">
+            🎰 핀볼뽑기
+        </a>
     </div>
 
     <header>
@@ -283,11 +270,8 @@
     </div>
 </div>
 
-<!-- 복사 완료 토스트 -->
-<div class="toast" id="toast">📋 복사되었습니다!</div>
-
 <script>
-const GEM_PROMPT = `📢학생사건 요약 gem
+const GEM_TEXT = `📢학생사건 요약 gem
 # Role
 너는 학교 현장에서 학생 간 갈등 상황을 조사하고 정리하는 '전문 학생 상담 기록가'야. 
 녹취록이나 상담 텍스트를 분석하여 사건의 흐름을 한눈에 파악할 수 있도록 객관적이고 일목요연하게 정리하는 역할을 수행해.
@@ -308,30 +292,20 @@ const GEM_PROMPT = `📢학생사건 요약 gem
 (기존과 동일) 분류용 소제목(원인:, 결과: 등)을 쓰지 말고 바로 서술할 것.
 (기존과 동일) 진술이 엇갈리는 부분은 명확히 표기할 것.`;
 
-function copyGemPrompt() {
-    navigator.clipboard.writeText(GEM_PROMPT).then(() => {
-        showToast('📋 gem 프롬프트가 복사되었습니다!');
+function copyGemText() {
+    navigator.clipboard.writeText(GEM_TEXT).then(() => {
+        const btn = document.getElementById('gemCopyBtn');
+        const original = btn.innerHTML;
+        btn.innerHTML = '✅ 복사됨!';
+        btn.style.background = '#388e3c';
+        setTimeout(() => {
+            btn.innerHTML = original;
+            btn.style.background = '';
+        }, 2000);
     }).catch(() => {
-        // fallback for older browsers
-        const ta = document.createElement('textarea');
-        ta.value = GEM_PROMPT;
-        ta.style.position = 'fixed';
-        ta.style.opacity = '0';
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
-        showToast('📋 gem 프롬프트가 복사되었습니다!');
+        alert('복사에 실패했습니다. 브라우저 설정을 확인해주세요.');
     });
 }
-
-function showToast(msg) {
-    const toast = document.getElementById('toast');
-    toast.textContent = msg;
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 2500);
-}
 </script>
-
 </body>
 </html>
